@@ -243,54 +243,7 @@ void Read_page(unsigned long dir)
 /******************************************************************************/
 void Read_image_mmc(long int dir, char animation, char w1, char w2, char h1, char h2)
 {
-//    unsigned char time_out = 0x1F;
-//    unsigned char response = 0xFF;
-//    char i, j, byte = 0x00;
-//    unsigned char dir1 = 0,dir2 = 0, dir3 = 0, dir4 = 0;
-//      signed char k;
-//   /***************************************************************************/    
-//    ChipSelect = 0;
-//    do{
-//        response = command_mmc(SET_BLOCKLEN, 0x00, 0x00, 0x03, 0x50);
-//        time_out--;
-//    }while(response != 0x00 && time_out > 0);
-//    WriteChar_SPI(0xFF);
-//    ChipSelect = 1;
-//    __delay_us(1);
-//     ///////////////////////////////////////////////////////   
-//    
-//    dir4 = (unsigned char)(dir/0x01000000);
-//    dir3 = (unsigned char)(dir/0x010000);
-//    dir2 = (unsigned char)(dir/0x0100);
-//    dir1 = (unsigned char)(dir);
-//    
-//    response = 0xFF;
-//    time_out = 0xFF;
-//    ChipSelect = 0;
-//    __delay_us(1);  
-//    do{
-//        response = command_mmc(READ_MMC, dir4, dir3, dir2, dir1);
-//        time_out--;
-//    }while(response != 0x00 && time_out > 0);
-//    response = 0xFF;
-//    time_out = 0xFF;
-//    while(WriteChar_SPI(0xFF) != 0xFE  && time_out > 0)         //  Esperar Token de lectura
-//        time_out--;
-///******************************************************************************/
-//    for(i = h1 ; i < h2 ; i ++){     //alto
-//        for(j = w1 ; j < w2 ; j++){  //ancho
-//            byte = WriteChar_SPI(0xFF);
-//            for(k=7;k>-1;k--){
-//                if( bit_test(byte ,7-k )) 
-//                    glcd_pixel((unsigned char) j*8+k,i, ON );
-//            }
-//        }
-//        if(animation)
-//            glcd_update();
-//    }
-///******************************************************************************/
-//    ChipSelect = 1;
-/*************************************************************/
+
 }
 
 
@@ -358,46 +311,8 @@ void Write_page(unsigned long dir, char clean)
 ////////////////////////////////////////////////////////////////////////////////
 void Write_image_mmc(long int dir)
 {
-//    int i = 0;
-//    int time_out = 0x0F;
-//    char response = 0xFF;       //inicia el valor de respuesta
-//    unsigned char dir1 = 0, dir2 = 0, dir3 = 0, dir4 = 0; 
-//    
-//    dir4 = (unsigned char)(dir/0x01000000);
-//    dir3 = (unsigned char)(dir/0x010000);
-//    dir2 = (unsigned char)(dir/0x0100);
-//    dir1 = (unsigned char)(dir);
-//     
-//    ChipSelect = 0;
-//    do{
-//        response = command_mmc(SET_BLOCKLEN, 0x00, 0x00, 0x04, 0x00);
-//        time_out -= 1;
-//    }while(response != 0x00 && time_out > 0);
-//    time_out = 0x0F;
-//    ChipSelect = 1;
-//    __delay_us(1);
-//    ChipSelect = 0;
-//    response = 0xFF;
-//    do{
-//        response = command_mmc(WRITE_MMC, dir4, dir3, dir2, dir1);
-//        time_out -= 1;
-//    }while(response != 0x00 && time_out > 0);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFF);
-//    WriteChar_SPI(0xFE);    //notificacion enviaran los datos
-///// ********************* Bloque de escritura **********************/
-//    for(i = 0; i < 1024; i++)
-////        WriteChar_SPI(intro[i]);
-////////////////////////////////////////////////////
-//    WriteChar_SPI(0xFF);    // fin de datos
-//    while(WriteChar_SPI(0xFF) != 0x05);       //respuesta escritura OK
-//    ChipSelect = 1;
-//    __delay_us(1);
+
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 void command_mmc(char comd, char char1, char char2, char char3, char char4)
@@ -492,47 +407,7 @@ void command_mmc(char comd, char char1, char char2, char char3, char char4)
 
 void Clean_block_mmc(unsigned long dir, unsigned long cant_char)
 {
-//    char time_out = 0x0F;
-//    char response = 0xFF;       //inicia el valor de respuesta
-//    unsigned char i = 0;
-//    
-//    unsigned char cant_chars4, cant_chars3, cant_chars2, cant_chars1;
-//    unsigned char dir1, dir2, dir3, dir4;
-//    
-//        
-//    dir4 = (unsigned char)(dir/0x01000000);
-//    dir3 = (unsigned char)(dir/0x010000);
-//    dir2 = (unsigned char)(dir/0x0100);
-//    dir1 = (unsigned char)(dir);
-//    
-//    cant_chars4 = (unsigned char)(cant_char/0x01000000);
-//    cant_chars3 = (unsigned char)(cant_char/0x010000);
-//    cant_chars2 = (unsigned char)(cant_char/0x0100);
-//    cant_chars1 = (unsigned char)(cant_char);
-//    
-//    
-//
-//    ChipSelect = 0;
-//    do{               
-//        response = command_mmc(SET_BLOCKLEN, cant_chars4, cant_chars3, cant_chars2, cant_chars1);
-//    }while(response != 0x00);
-//    ChipSelect = 1;
-//    __delay_us(1);
-//    
-//    ChipSelect = 0;
-//    do{
-//        response = command_mmc(WRITE_MMC, dir4, dir3, dir2, dir1);
-//    }while(response != 0x00);
-//
-//    WriteChar_SPI(0xFE);
-//    while(time_out > 0){
-//        WriteChar_SPI(0x00); 
-//        time_out -= 1;
-//    }
-//    WriteChar_SPI(0xFF);
-//    while(WriteChar_SPI(0x00) != 0x05);
-//    ChipSelect = 1;
-//    __delay_us(1);
+
 }
 
 
